@@ -28,7 +28,6 @@ This project implements a real-time American Sign Language (ASL) recognition sys
 
 Sign-language-detection/
 
-│
 ├── COLLECT.py # Data collection script
 
 ├── TRAINING.py # Model training script
