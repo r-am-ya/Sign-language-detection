@@ -29,9 +29,13 @@ This project implements a real-time American Sign Language (ASL) recognition sys
 Sign-language-detection/
 │
 ├── COLLECT.py # Data collection script
+
 ├── TRAINING.py # Model training script
+
 ├── GUI.py # Real-time ASL recognition GUI
+
 ├── asl_landmark_dl_model.h5 # Trained model
+
 ├── README.md
 
 
@@ -53,22 +57,22 @@ Sign-language-detection/
 - Hand landmarks are extracted and normalized
 - The predicted ASL alphabet and confidence score are displayed in the GUI
 
-🎓 Academic Use
+**🎓 Academic Use**
 
 This project is suitable for:
 
-Project-Based Learning (PCL)
+- Project-Based Learning (PCL)
 
-Machine Learning coursework
+- Machine Learning coursework
 
-Mini and Major projects
+- Mini and Major projects
 
-Resume and portfolio showcase
+- Resume and portfolio showcase
 
 📌 Future Enhancements
 
-Word and sentence-level ASL recognition
+- Word and sentence-level ASL recognition
 
-Prediction smoothing for stable outputs
+- Prediction smoothing for stable outputs
 
-Web or mobile-based deployment
+- Web or mobile-based deployment
