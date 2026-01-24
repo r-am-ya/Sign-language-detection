@@ -61,18 +61,12 @@ Sign-language-detection/
 
 This project is suitable for:
 
-- Project-Based Learning (PCL)
-
 - Machine Learning coursework
-
 - Mini and Major projects
-
 - Resume and portfolio showcase
 
 📌 Future Enhancements
 
 - Word and sentence-level ASL recognition
-
 - Prediction smoothing for stable outputs
-
 - Web or mobile-based deployment
