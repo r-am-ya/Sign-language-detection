@@ -57,14 +57,6 @@ Sign-language-detection/
 - Hand landmarks are extracted and normalized
 - The predicted ASL alphabet and confidence score are displayed in the GUI
 
-**🎓 Academic Use**
-
-This project is suitable for:
-
-- Machine Learning coursework
-- Mini and Major projects
-- Resume and portfolio showcase
-
 📌 Future Enhancements
 
 - Word and sentence-level ASL recognition
