@@ -6,27 +6,19 @@ import tkinter as tk
 from tkinter import Label, Button
 from PIL import Image, ImageTk
 import os
-
-# =========================
-# LOAD MODEL
-# =========================
+# LOAD THE MODEL
 model_path = os.path.join(os.path.dirname(__file__), "asl_landmark_dl_model.h5")
 model = tf.keras.models.load_model(model_path)
 
 CLASS_NAMES = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-
-# =========================
 # NORMALIZATION FUNCTION
-# =========================
 def normalize_landmarks(landmarks):
     landmarks = np.array(landmarks).reshape(-1, 3)
     wrist = landmarks[0]
     landmarks = landmarks - wrist
     return landmarks.flatten()
 
-# =========================
 # MEDIAPIPE HANDS
-# =========================
 mp_hands = mp.solutions.hands
 mp_draw = mp.solutions.drawing_utils
 hands = mp_hands.Hands(
@@ -35,17 +27,13 @@ hands = mp_hands.Hands(
     min_tracking_confidence=0.7
 )
 
-# =========================
 # GUI WINDOW
-# =========================
 window = tk.Tk()
 window.title("ASL Real-Time Recognition")
 window.geometry("900x600")
 window.resizable(False, False)
-
-# =========================
 # LABELS
-# =========================
+
 video_label = Label(window)
 video_label.pack(pady=10)
 
@@ -57,9 +45,7 @@ prediction_label = Label(
 )
 prediction_label.pack(pady=10)
 
-# =========================
 # CAMERA CONTROL
-# =========================
 cap = None
 running = False
 
@@ -95,9 +81,8 @@ def update_frame():
         for hand_landmarks in result.multi_hand_landmarks:
             mp_draw.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-            # =========================
             # EXTRACT + NORMALIZE
-            # =========================
+            
             raw_landmarks = []
             for lm in hand_landmarks.landmark:
                 raw_landmarks.extend([lm.x, lm.y, lm.z])
@@ -105,17 +90,12 @@ def update_frame():
             keypoints = normalize_landmarks(raw_landmarks)
             keypoints = keypoints.reshape(1, -1)
 
-            # =========================
             # PREDICTION
-            # =========================
             prediction = model.predict(keypoints, verbose=0)
             class_id = np.argmax(prediction)
             confidence = prediction[0][class_id]
             letter = CLASS_NAMES[class_id]
-
-            # =========================
             # DISPLAY
-            # =========================
             if confidence > 0.7:
                 prediction_label.config(
                     text=f"Prediction: {letter} ({confidence:.2f})"
@@ -133,9 +113,7 @@ def update_frame():
 
     window.after(10, update_frame)
 
-# =========================
 # BUTTONS
-# =========================
 button_frame = tk.Frame(window)
 button_frame.pack(pady=20)
 
@@ -159,7 +137,6 @@ stop_btn = Button(
 )
 stop_btn.grid(row=0, column=1, padx=20)
 
-# =========================
 # RUN GUI
-# =========================
 window.mainloop()
+
